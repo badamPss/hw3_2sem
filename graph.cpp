@@ -20,12 +20,21 @@ void Graph::addEdge(int from, int to, double weight) {
 
 void Graph::removeEdge(int from, int to) {
     if (adjacencyList.find(from) == adjacencyList.end()) {
+        std::cerr << "removeEdge: ребро не существует" << std::endl;
         return;
     }
     auto& edges = adjacencyList[from];
+    int start_size = edges.size();
+
     edges.erase(std::remove_if(edges.begin(), edges.end(), [to](const std::pair<int, double>& edge) {
         return edge.first == to;
     }), edges.end());
+
+    if (edges.size() == start_size) {
+        std::cerr << "removeEdge: ребро не существует" << std::endl;
+        return;
+    }
+
     std::cout << "Удалено ребро из " << from << " в " << to << std::endl;
 }
 

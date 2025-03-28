@@ -29,7 +29,7 @@ int main() {
     std::cout << std::endl;
 
 	// Удаление рёбер
-	manager.removeEdge(1, 3);
+	manager.removeEdge(0, 2);
 	std::cout << std::endl;
 
 	// Обновление веса рёбер
