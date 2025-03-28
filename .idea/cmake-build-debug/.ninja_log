@@ -1,0 +1,11 @@
+# ninja log v6
+26	1215	1743183302731548061	CMakeFiles/_idea.dir/Users/ignatvaschilo/cpp/hw3_2sem/main.cpp.o	7245bdeb4e2211e3
+26	1312	1743183302731873278	CMakeFiles/_idea.dir/Users/ignatvaschilo/cpp/hw3_2sem/PathFinder.cpp.o	248c883e1695b629
+10	722	1743184329205200553	CMakeFiles/_idea.dir/Users/ignatvaschilo/cpp/hw3_2sem/GraphManager.cpp.o	56ece15a343fc7c1
+722	981	1743184329917866342	_idea	817ef9d88e91c2c0
+23	1293	1743183302729304706	CMakeFiles/_idea.dir/Users/ignatvaschilo/cpp/hw3_2sem/graph.cpp.o	5058b94509ad72b5
+25	1304	1743184507955415359	CMakeFiles/_idea.dir/Users/ignatvaschilo/cpp/hw3_2sem/main.cpp.o	7245bdeb4e2211e3
+24	1306	1743184507955166966	CMakeFiles/_idea.dir/Users/ignatvaschilo/cpp/hw3_2sem/GraphManager.cpp.o	56ece15a343fc7c1
+23	1379	1743184507954406267	CMakeFiles/_idea.dir/Users/ignatvaschilo/cpp/hw3_2sem/graph.cpp.o	5058b94509ad72b5
+25	1382	1743184507955674362	CMakeFiles/_idea.dir/Users/ignatvaschilo/cpp/hw3_2sem/PathFinder.cpp.o	248c883e1695b629
+1382	1621	1743184509311038590	_idea	817ef9d88e91c2c0

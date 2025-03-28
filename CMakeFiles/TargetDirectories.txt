@@ -1,0 +1,3 @@
+/Users/ignatvaschilo/cpp/hw3_2sem/CMakeFiles/_idea.dir
+/Users/ignatvaschilo/cpp/hw3_2sem/CMakeFiles/edit_cache.dir
+/Users/ignatvaschilo/cpp/hw3_2sem/CMakeFiles/rebuild_cache.dir

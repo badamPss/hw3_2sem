@@ -1,9 +1,9 @@
 #include "graph.h"
 
-Graph::Graph(int vertexCount, bool weighted) : vertexCount(vertexCount), weighted(weighted) {}
+Graph::Graph(bool weighted) : weighted(weighted) {}
 
 void Graph::addEdge(int from, int to, double weight) {
-    if ((from >= vertexCount || to >= vertexCount) || (from < 0 || to < 0))  {
+    if (from < 0 || to < 0)  {
         std::cerr << "add edge: неправильный индекс вершины" << std::endl;
         return;
     }
@@ -13,7 +13,23 @@ void Graph::addEdge(int from, int to, double weight) {
     }
     if (weight <= 0) {
         std::cerr << "add edge: вес ребра должен быть положительным" << std::endl;
+        return;
     }
+    if (adjacencyList.find(from) == adjacencyList.end() || adjacencyList.find(to) == adjacencyList.end()) {
+        std::cerr << "add edge: добавить нельзя, так как какая-то из вершин не существует" << std::endl;
+        return;
+    }
+
+    auto& edges = adjacencyList[from];
+    auto it = std::find_if(edges.begin(), edges.end(),
+        [to](const std::pair<int, double>& edge) {
+            return edge.first == to;
+        });
+    if (it != edges.end()) {
+        std::cerr << "add edge: данное ребро уже существует" << std::endl;
+        return;
+    }
+
     adjacencyList[from].push_back({to, weight});
     std::cout << "Добавлено ребро из " << from << " в " << to << " с длиной " << weight << std::endl;
 }
@@ -38,10 +54,12 @@ void Graph::removeEdge(int from, int to) {
     std::cout << "Удалено ребро из " << from << " в " << to << std::endl;
 }
 
-void Graph::addVertex() {
-    int newVertex = vertexCount;
+void Graph::addVertex(int newVertex) {
+    if (adjacencyList.find(newVertex) != adjacencyList.end()) {
+        std::cerr << "addVertex: вершина " << newVertex <<  " уже существует " << std::endl;
+        return;
+    }
     adjacencyList[newVertex] = {};
-    vertexCount++;
     std::cout << "Создана новая вершина: " << newVertex << std::endl;
 }
 
@@ -58,7 +76,6 @@ void Graph::removeVertex(int vertex) {
             return edge.first == vertex;
         }), edges.end());
     }
-    vertexCount--;
     std::cout << "Вершина " << vertex << " удалена." << std::endl;
 }
 
@@ -80,7 +97,7 @@ void Graph::updateEdgeWeight(int from, int to, double newWeight) {
         std::cerr << "updateEdgeWeight: ребро " << from << " -> " << to << " не существует." << std::endl;
         return;
     }
-    std::cout << "ОБНОВЛЕНО: ребро из " << from << " to " << to << " с новым весом " << newWeight << std::endl;
+    std::cout << "ОБНОВЛЕНО: ребро из " << from << " в " << to << " с новым весом " << newWeight << std::endl;
 }
 
 void Graph::printGraph() const {
@@ -93,7 +110,7 @@ void Graph::printGraph() const {
     }
 }
 
-WeightedGraph::WeightedGraph(int vertexCount) : Graph(vertexCount, true) {}
+WeightedGraph::WeightedGraph() : Graph(true) {}
 
 WeightedGraph::~WeightedGraph() = default;
 
@@ -101,7 +118,7 @@ void WeightedGraph::addEdge(int from, int to, double weight) {
     Graph::addEdge(from, to, weight);
 }
 
-UnweightedGraph::UnweightedGraph(int vertexCount) : Graph(vertexCount, false) {}
+UnweightedGraph::UnweightedGraph() : Graph(false) {}
 
 UnweightedGraph::~UnweightedGraph() = default;
 

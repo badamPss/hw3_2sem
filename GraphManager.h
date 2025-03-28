@@ -11,7 +11,7 @@ public:
 	Graph* getGraph() const;
 	~GraphManager();
 
-	void addVertex();
+	void addVertex(int newVertex);
 	void removeVertex(int vertex);
 	void addEdge(int from, int to, double weight = 1.0);
 	void removeEdge(int from, int to);

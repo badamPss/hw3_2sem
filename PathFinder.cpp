@@ -42,6 +42,18 @@ std::pair<std::vector<int>, double> BellmanFordPathFinder::findShortestPath(int 
     std::reverse(path.begin(), path.end());
 
     double totalCost = distances[end];
+
+    if (path.size() == 1) {
+        std::cout << "No path from " << start << " to " << end << std::endl;
+        return {path, -1};
+    }
+
+    std::cout << "Путь (Беллман-Форд): ";
+    for (int v : path) {
+        std::cout << v << " ";
+    }
+    std::cout << std::endl;
+    std::cout << "Total cost: " << totalCost << std::endl;
     return {path, totalCost};
 }
 
@@ -86,5 +98,16 @@ std::pair<std::vector<int>, double> DijkstraPathFinder::findShortestPath(int sta
     std::reverse(path.begin(), path.end());
     double totalCost = distances[end];
 
+    if (path.size() == 1) {
+        std::cout << "No path from " << start << " to " << end << std::endl;
+        return {path, -1};
+    }
+
+    std::cout << "Путь (Дейкстра): ";
+    for (int v : path) {
+        std::cout << v << " ";
+    }
+    std::cout << std::endl;
+    std::cout << "Total cost: " << totalCost << std::endl;
     return {path, totalCost};
 }

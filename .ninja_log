@@ -1,0 +1,8 @@
+# ninja log v6
+1	1018	1743184582677577511	CMakeFiles/_idea.dir/main.cpp.o	c1bc27ee6e1d0b57
+1	1058	1743184582677395012	CMakeFiles/_idea.dir/GraphManager.cpp.o	b93f41f14b544c6c
+1	1118	1743184582677065889	CMakeFiles/_idea.dir/graph.cpp.o	69e3d09e9feb6da3
+1	1129	1743184582677746593	CMakeFiles/_idea.dir/PathFinder.cpp.o	2e822481e2d9974f
+1129	1360	1743184583805093942	_idea	2177a357c17f574b
+12	1121	1743185641045864165	CMakeFiles/_idea.dir/main.cpp.o	c1bc27ee6e1d0b57
+23	1032	1743185666179143280	CMakeFiles/_idea.dir/GraphManager.cpp.o	b93f41f14b544c6c

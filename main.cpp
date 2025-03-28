@@ -23,17 +23,18 @@ int main() {
     std::cout << std::endl;
 
 	// Добавление новой вершины и рёбер
-	manager.addVertex();
+	manager.addVertex(3);
+	manager.addVertex(4);
 	manager.addEdge(4, 0, 2.0);
 	manager.addEdge(4, 2, 3.5);
     std::cout << std::endl;
 
 	// Удаление рёбер
-	manager.removeEdge(0, 2);
+	manager.removeEdge(4, 2);
 	std::cout << std::endl;
 
 	// Обновление веса рёбер
-	manager.updateEdgeWeight(0, 2, 4.0);
+	manager.updateEdgeWeight(4, 0, 4.0);
 	std::cout << std::endl;
 
 	// Печать обновленного графа
@@ -44,29 +45,9 @@ int main() {
 	// Алгоритм Беллмана-Форда
 	BellmanFordPathFinder bfFinder(graph);
 	std::pair<std::vector<int>, double> bfPair = bfFinder.findShortestPath(0, 2);
-    std::vector<int> bfPath = bfPair.first;
-    double bfTotalCost = bfPair.second;
-
-	std::cout << "Путь (Беллман-Форд): ";
-	for (int v : bfPath) {
-		std::cout << v << " ";
-	}
-	std::cout << std::endl;
-	std::cout << "Total cost: " << bfTotalCost << std::endl;
-    std::cout << std::endl;
 
 	// Алгоритм Дейкстры
 	DijkstraPathFinder dijkstraFinder(graph);
 	std::pair<std::vector<int>, double> dPair = dijkstraFinder.findShortestPath(0, 2);
-	std::vector<int> dijkstraPath = dPair.first;
-	double dTotalCost = dPair.second;
-
-	std::cout << "Путь (Дейкстра): ";
-	for (int v : dijkstraPath) {
-		std::cout << v << " ";
-	}
-	std::cout << std::endl;
-	std::cout << "Total cost: " << dTotalCost << std::endl;
-    std::cout << std::endl;
 	return 0;
 }
