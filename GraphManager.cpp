@@ -94,7 +94,7 @@ bool readGraphFromFile(GraphManager& manager, const std::string& filename) {
             std::vector<double> nums = split(line, ' ');
 
             if ( (int)nums[0] != nums[0] || (int)nums[1] != nums[1] || from < 0 || to < 0 || nums.size() != 3) {
-                std::cerr << "readGraphFromFile: неправильный индекс вершины" << std::endl;
+                std::cerr << "readGraphFromFile: неправильный формат файла" << std::endl;
                 delete graph;
                 return false;
             }

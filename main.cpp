@@ -44,10 +44,10 @@ int main() {
 
 	// Алгоритм Беллмана-Форда
 	BellmanFordPathFinder bfFinder(graph);
-	std::pair<std::vector<int>, double> bfPair = bfFinder.findShortestPath(0, 2);
+	std::pair<std::vector<int>, double> bfPair = bfFinder.findShortestPath(1, 3);
 
 	// Алгоритм Дейкстры
 	DijkstraPathFinder dijkstraFinder(graph);
-	std::pair<std::vector<int>, double> dPair = dijkstraFinder.findShortestPath(0, 2);
+	std::pair<std::vector<int>, double> dPair = dijkstraFinder.findShortestPath(1, 3);
 	return 0;
 }

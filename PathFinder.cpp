@@ -63,21 +63,14 @@ std::pair<std::vector<int>, double> DijkstraPathFinder::findShortestPath(int sta
     int vertexCount = graph->getVertexCount();
     std::vector<double> distances(vertexCount, std::numeric_limits<double>::infinity());
     std::vector<int> previous(vertexCount, -1);
+    std::queue<int> q;
+
     distances[start] = 0.0;
+    q.push(start);
 
-    auto compare = [](const std::pair<int, double>& left, const std::pair<int, double>& right) {
-        return left.second > right.second;
-    };
-
-    std::priority_queue<std::pair<int, double>, std::vector<std::pair<int, double>>, decltype(compare)> pq(compare);
-    pq.push({start, 0.0});
-
-    while (!pq.empty()) {
-        int u = pq.top().first;
-        double d = pq.top().second;
-        pq.pop();
-
-        if (d > distances[u]) continue;
+    while (!q.empty()) {
+        int u = q.front();
+        q.pop();
 
         for (const auto& edge : graph->getEdges().at(u)) {
             int v = edge.first;
@@ -85,7 +78,7 @@ std::pair<std::vector<int>, double> DijkstraPathFinder::findShortestPath(int sta
             if (distances[u] + weight < distances[v]) {
                 distances[v] = distances[u] + weight;
                 previous[v] = u;
-                pq.push({v, distances[v]});
+                q.push(v);  // Добавляем в очередь
             }
         }
     }
@@ -94,8 +87,8 @@ std::pair<std::vector<int>, double> DijkstraPathFinder::findShortestPath(int sta
     for (int at = end; at != -1; at = previous[at]) {
         path.push_back(at);
     }
-
     std::reverse(path.begin(), path.end());
+
     double totalCost = distances[end];
 
     if (path.size() == 1) {
@@ -103,7 +96,7 @@ std::pair<std::vector<int>, double> DijkstraPathFinder::findShortestPath(int sta
         return {path, -1};
     }
 
-    std::cout << "Путь (Дейкстра): ";
+    std::cout << "Путь (Дейкстра без кучи): ";
     for (int v : path) {
         std::cout << v << " ";
     }
