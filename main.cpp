@@ -13,34 +13,11 @@ int main() {
 	std::cout << std::endl;
 
 	Graph* graph = manager.getGraph();
-
 	// печатаем граф
-	graph->printGraph();
+	// graph->printGraph();
 	std::cout << std::endl;
 
-    // добавление ребра между несуществ вершинами
-	manager.addEdge(5, 0, 2);
-    std::cout << std::endl;
-
-	// Добавление новой вершины и рёбер
-	manager.addVertex(3);
-	manager.addVertex(4);
-	manager.addEdge(4, 0, 2.0);
-	manager.addEdge(4, 2, 3.5);
-    std::cout << std::endl;
-
-	// Удаление рёбер
-	manager.removeEdge(4, 2);
-	std::cout << std::endl;
-
-	// Обновление веса рёбер
-	manager.updateEdgeWeight(4, 0, 4.0);
-	std::cout << std::endl;
-
-	// Печать обновленного графа
-	std::cout << "обновленынй граф:" << std::endl;
-	graph->printGraph();
-	std::cout << std::endl;
+    // manager.removeEdge(0, 1);
 
 	// Алгоритм Беллмана-Форда
 	BellmanFordPathFinder bfFinder(graph);
